@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="dream_manager_service:war">
+    <output-path>$PROJECT_DIR$/dream_manager/dream_manager_service/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>dream_manager_service</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="dream_manager_service.war">
+      <element id="artifact" artifact-name="dream_manager_service:war exploded" />
+    </root>
+  </artifact>
+</component>

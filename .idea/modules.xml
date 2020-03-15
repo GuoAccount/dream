@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dream_common/dream_common.iml" filepath="$PROJECT_DIR$/dream_common/dream_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager_dao/dream_manager_dao.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager_dao/dream_manager_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager_interface/dream_manager_interface.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager_interface/dream_manager_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager_pojo/dream_manager_pojo.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager_pojo/dream_manager_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager_service/dream_manager_service.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager_service/dream_manager_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_manager_web/dream_manager_web.iml" filepath="$PROJECT_DIR$/dream_manager_web/dream_manager_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_parent/dream_parent.iml" filepath="$PROJECT_DIR$/dream_parent/dream_parent.iml" />
+    </modules>
+  </component>
+</project>

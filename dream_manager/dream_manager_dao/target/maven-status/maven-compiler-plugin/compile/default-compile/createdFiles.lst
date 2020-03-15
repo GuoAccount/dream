@@ -1,0 +1,11 @@
+com\dream\mapper\TbItemMapper.class
+com\dream\mapper\TbOrderShippingMapper.class
+com\dream\mapper\TbContentCategoryMapper.class
+com\dream\mapper\TbItemCatMapper.class
+com\dream\mapper\TbContentMapper.class
+com\dream\mapper\TbItemDescMapper.class
+com\dream\mapper\TbItemParamMapper.class
+com\dream\mapper\TbUserMapper.class
+com\dream\mapper\TbItemParamItemMapper.class
+com\dream\mapper\TbOrderMapper.class
+com\dream\mapper\TbOrderItemMapper.class
