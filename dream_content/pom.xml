@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dream_parent</artifactId>
+        <groupId>com.dream</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../dream_parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>dream_content</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>dream_content_interface</module>
+        <module>dream_content_service</module>
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.dream</groupId>
+            <artifactId>dream_common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <!-- 配置tomcat插件 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <port>8083</port><!--端口号-->
+                    <path>/</path><!--访问路径-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

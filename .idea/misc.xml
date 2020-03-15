@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/dream_content/dream_content_service" />
     <file type="web" url="file://$PROJECT_DIR$/dream_manager/dream_manager_service" />
     <file type="web" url="file://$PROJECT_DIR$/dream_manager_web" />
+    <file type="web" url="file://$PROJECT_DIR$/dream_protal_web" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -11,6 +13,8 @@
         <option value="$PROJECT_DIR$/dream_common/pom.xml" />
         <option value="$PROJECT_DIR$/dream_manager/pom.xml" />
         <option value="$PROJECT_DIR$/dream_manager_web/pom.xml" />
+        <option value="$PROJECT_DIR$/dream_protal_web/pom.xml" />
+        <option value="$PROJECT_DIR$/dream_content/pom.xml" />
       </list>
     </option>
   </component>

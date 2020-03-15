@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/dream_common/dream_common.iml" filepath="$PROJECT_DIR$/dream_common/dream_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_content/dream_content.iml" filepath="$PROJECT_DIR$/dream_content/dream_content.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_content/dream_content_interface/dream_content_interface.iml" filepath="$PROJECT_DIR$/dream_content/dream_content_interface/dream_content_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_content/dream_content_service/dream_content_service.iml" filepath="$PROJECT_DIR$/dream_content/dream_content_service/dream_content_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager_dao/dream_manager_dao.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager_dao/dream_manager_dao.iml" />
       <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager_interface/dream_manager_interface.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager_interface/dream_manager_interface.iml" />
@@ -10,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/dream_manager/dream_manager_service/dream_manager_service.iml" filepath="$PROJECT_DIR$/dream_manager/dream_manager_service/dream_manager_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/dream_manager_web/dream_manager_web.iml" filepath="$PROJECT_DIR$/dream_manager_web/dream_manager_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/dream_parent/dream_parent.iml" filepath="$PROJECT_DIR$/dream_parent/dream_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_protal_web/dream_protal_web.iml" filepath="$PROJECT_DIR$/dream_protal_web/dream_protal_web.iml" />
     </modules>
   </component>
 </project>
