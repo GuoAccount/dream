@@ -1,5 +1,6 @@
 package com.dream.controller;
 
+import com.dream.common.pojo.DreamResult;
 import com.dream.common.pojo.EasyUiTreeNode;
 import com.dream.content.service.TbContentCategoryService;
 import com.dream.pojo.TbContentCategory;
@@ -21,5 +22,9 @@ public class contentCategoryController {
      */
     public List<EasyUiTreeNode> list(@RequestParam(value = "id",defaultValue = "0") Long parentId){
         return tbContentCategoryService.getContentCategoryByParentId(parentId);
+    }
+    @RequestMapping("create")
+    public DreamResult createCategory(Long parentId,String name){
+        return tbContentCategoryService.createCategory(parentId,name);
     }
 }
