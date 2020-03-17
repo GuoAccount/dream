@@ -23,6 +23,8 @@
   -->
   <dubbo:service interface="com.dream.content.service.TbContentCategoryService"
                  ref="tbContentCategoryServiceImpl"/>
+  <dubbo:service interface="com.dream.content.service.TbContentService"
+                 ref="tbContentServiceImpl"/>
 <!--  <dubbo:service interface="com.dream.service.ItemCatService"-->
 <!--                 ref="itemCatServiceImpl"/>-->
 </beans>

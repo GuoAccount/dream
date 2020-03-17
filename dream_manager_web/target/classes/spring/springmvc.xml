@@ -40,6 +40,8 @@
                      id="itemCatService"/>
     <dubbo:reference interface="com.dream.content.service.TbContentCategoryService"
                      id="tbContentCategoryService"/>
+    <dubbo:reference interface="com.dream.content.service.TbContentService"
+                     id="tbContentCategory"/>
     <!--pro-->
     <context:property-placeholder location="classpath:resource/resources.properties"/> <!--文件上传-->
     <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver"

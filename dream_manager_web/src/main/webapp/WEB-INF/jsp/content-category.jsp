@@ -63,8 +63,17 @@ function menuHandler(item){
 		tree.tree('beginEdit',node.target);
 	}else if(item.name === "delete"){
 		$.messager.confirm('确认','确定删除名为 '+node.text+' 的分类吗？',function(r){
+		    //1.判断当前要删除的节点是否为父节点
+            //当该节点下有子节点，并且子节点数组长度大于0时，不能删除 （undefined获取length为0,则可以删除）
+            if(node.children&&node.children.length>0){
+                $.messager.alert('提示','此分类下是父分类，想要删除请先删除其下的子分类');
+                return;
+            }
+            //2.判断一下当前节点的父节点是只有一个子节点，如果是，则isParentAfterDelete就是false
+            var  isParentAfterDelete=$("#contentCategory").tree("getParent",node.target).children.length==1?false:true;
+            console.log(isParentAfterDelete);
 			if(r){
-				$.post("/content/category/delete/",{parentId:node.parentId,id:node.id},function(){
+				$.post("/content/category/delete/",{parentId:$("#contentCategory").tree("getParent",node.target).id,id:node.id,isParentAfterDelete:isParentAfterDelete},function(){
 					tree.tree("remove",node.target);
 				});	
 			}

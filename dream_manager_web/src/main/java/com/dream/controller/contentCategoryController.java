@@ -27,4 +27,12 @@ public class contentCategoryController {
     public DreamResult createCategory(Long parentId,String name){
         return tbContentCategoryService.createCategory(parentId,name);
     }
+    @RequestMapping("/delete")
+    public DreamResult deleteContentCategory(Long parentId,Long id,boolean isParentAfterDelete){
+        return tbContentCategoryService.deleteContentCategory(parentId,id,isParentAfterDelete);
+    }
+    @RequestMapping("/update")
+    public DreamResult updateContentCategory(Long id,String name){
+        return tbContentCategoryService.updateContentCategory(id,name);
+    }
 }

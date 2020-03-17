@@ -20,4 +20,21 @@ public interface TbContentCategoryService {
      * @return
      */
     DreamResult createCategory(Long parentId, String name);
+
+    /**
+     *
+     * @param parentId
+     * @param id
+     * @param isParentAfterDelete
+     * @return
+     */
+    DreamResult deleteContentCategory(Long parentId, Long id, boolean isParentAfterDelete);
+
+    /**
+     *
+     * @param id
+     * @param name
+     * @return
+     */
+    DreamResult updateContentCategory(Long id, String name);
 }

@@ -11,6 +11,7 @@
  		http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <context:component-scan base-package="com.dream.protal.controller"/>
+    <context:property-placeholder location="classpath:resource/Ad1Node.properties"/>
 
     <!--开启MVC注解扫描 如果配置了此注解驱动，那么就不用配置处理器映射器和处理器适配器了 -->
     <mvc:annotation-driven/>
@@ -34,8 +35,8 @@
         是id="itemService"
         在controller中注入对象时，使用这个id进行注入
     -->
-<!--    <dubbo:reference interface="com.dream.service.ItemService"-->
-<!--                     id="itemService"/>-->
+    <dubbo:reference interface="com.dream.content.service.TbContentService"
+                     id="tbContentService"/>
 <!--    <dubbo:reference interface="com.dream.service.ItemCatService"-->
 <!--                     id="itemCatService"/>-->
     <!--pro-->

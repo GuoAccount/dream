@@ -65,4 +65,30 @@ public class TbContentCategoryServiceImpl implements TbContentCategoryService {
         }
         return DreamResult.ok(tbContentCategory);
     }
+
+    @Override
+    public DreamResult deleteContentCategory(Long parentId, Long id, boolean isParentAfterDelete) {
+        //1.先删除id的节点
+        tbContentCategoryMapper.deleteByPrimaryKey(id);
+        //2根据parentId判断是否是父节点如果是，则不变，如果不是则修改
+        if (!isParentAfterDelete){
+            //如果是true则说明是父节点则父节点信息不需要修改
+            TbContentCategory tbContentCategory = new TbContentCategory();
+            tbContentCategory.setId(parentId);
+            tbContentCategory.setIsParent(isParentAfterDelete);
+            tbContentCategoryMapper.updateByPrimaryKeySelective(tbContentCategory);
+
+        }
+        return DreamResult.ok();
+    }
+
+    @Override
+    public DreamResult updateContentCategory(Long id, String name) {
+        TbContentCategory tbContentCategory = new TbContentCategory();
+        tbContentCategory.setId(id);
+        tbContentCategory.setName(name);
+        tbContentCategory.setUpdated(new Date());
+        tbContentCategoryMapper.updateByPrimaryKeySelective(tbContentCategory);
+        return DreamResult.ok();
+    }
 }
