@@ -1,16 +1,24 @@
 package com.dream.content.service.impl;
 
+import com.alibaba.dubbo.common.json.JSON;
+import com.alibaba.dubbo.common.json.ParseException;
 import com.dream.common.pojo.DreamResult;
 import com.dream.common.pojo.EasyUiDataGridResult;
+import com.dream.content.redis.JedisClient;
 import com.dream.content.service.TbContentService;
 import com.dream.mapper.TbContentMapper;
 import com.dream.pojo.TbContent;
 import com.dream.pojo.TbContentExample;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.AbstractDocument;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +27,10 @@ import java.util.List;
 public class TbContentServiceImpl implements TbContentService {
     @Autowired
     private TbContentMapper tbContentMapper;
+    @Autowired
+    private JedisClient jedisClient;
+    @Value("${CONTENT_KEY}")
+    private String CONTENT_KEY;
     @Override
     public EasyUiDataGridResult list(int page, int rows, long categoryId) {
         //1.先调用分页插件
@@ -47,10 +59,25 @@ public class TbContentServiceImpl implements TbContentService {
 
     @Override
     public List<TbContent> selectContentByCategoryId(Long ad1_category_id) {
+        String jsonValue = jedisClient.hget(CONTENT_KEY, ad1_category_id + "");
+        if (StringUtils.isNoneBlank(jsonValue)){
+            try {
+                TbContent[] parse = JSON.parse(jsonValue, TbContent[].class);
+                return Arrays.asList(parse);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+        }
         TbContentExample tbContentExample = new TbContentExample();
         TbContentExample.Criteria criteria = tbContentExample.createCriteria();
         criteria.andCategoryIdEqualTo(ad1_category_id);
         List<TbContent> tbContents = tbContentMapper.selectByExample(tbContentExample);
+        try {
+            jedisClient.hset(CONTENT_KEY,ad1_category_id+"",JSON.json(tbContents));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return tbContents;
     }
 
@@ -67,6 +94,8 @@ public class TbContentServiceImpl implements TbContentService {
     public DreamResult update(TbContent tbContent) {
         tbContent.setUpdated(new Date());
         tbContentMapper.updateByPrimaryKeySelective(tbContent);
+        //缓存同步
+        jedisClient.hdel(CONTENT_KEY,tbContent.getCategoryId().toString());
         return DreamResult.ok();
     }
 }
