@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 导入资源文件 db.properties-->
+    <context:property-placeholder location="classpath:properties/*.properties"/>
+
+    <!-- 配置dbcp连接池参数使用Spring表达式来传值
+     使用Druid连接池，在功能和性能上都超过其他的dbcp,c3p0等连接池，alibaba提供的
+     -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="username" value="${jdbc.user}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <!-- 连接池启动时的初始值 -->
+        <property name="initialSize" value="${initialSize}"/>
+        <!-- 连接池的最大值 -->
+        <property name="maxActive" value="${maxActive}"/>
+    </bean>
+    <!-- 配置一个bean SqlSessionFactory对象-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 配置连接池 -->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- MyBatis的核心文件 -->
+        <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"></property>
+    </bean>
+
+
+    <!-- 配置包扫描器 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 配置要扫描的包 -->
+        <property name="basePackage" value="com.dream.mapper"/>
+    </bean>
+</beans>
