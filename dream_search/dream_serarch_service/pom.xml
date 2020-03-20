@@ -3,27 +3,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>dream_parent</artifactId>
+        <artifactId>dream_search</artifactId>
         <groupId>com.dream</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../dream_parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>dream_manager_web</artifactId>
+    <artifactId>dream_serarch_service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <dependencies>
+
+        <!-- dao依赖 -->
+        <dependency>
+            <groupId>com.dream</groupId>
+            <artifactId>dream_manager_dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency> <!-- 接口的依赖 -->
         <dependency>
             <groupId>com.dream</groupId>
             <artifactId>dream_manager_interface</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dream</groupId>
-            <artifactId>dream_manager_pojo</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <!-- Spring -->
+        </dependency> <!-- spring的依赖 --> <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -51,24 +51,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-        </dependency> <!-- JSP相关 -->
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jsp-api</artifactId>
-            <scope>provided</scope>
-        </dependency> <!-- 文件上传组件 -->
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
         </dependency>
         <!--dubbo-->
         <dependency>
@@ -97,29 +79,15 @@
             <artifactId>zkclient</artifactId>
             <version>0.1</version>
         </dependency>
-        <!--      fastdfs依赖  -->
+        <!-- solr客户端 -->
         <dependency>
-            <groupId>fastdfs_client</groupId>
-            <artifactId>fastdfs_client</artifactId>
-            <version>1.25</version>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+            <version>${solrj.version}</version>
         </dependency>
-<!--        josn依赖-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.24</version>
-        </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.dream</groupId>
-            <artifactId>dream_content_interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.dream</groupId>
@@ -127,19 +95,48 @@
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-    </dependencies>
 
-    <!--配置tomcat插件-->
+    </dependencies>
+    <!--  跳过测试-->
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
                 <configuration>
-                    <port>8080</port><!--端口号-->
-                    <path>/</path><!--访问路径-->
+                    <skipTests>true</skipTests>
                 </configuration>
+
             </plugin>
+
         </plugins>
+        <!--    默认只会扫描原目录下的配置文件，设置java下的也扫描-->
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <!--    默认只会扫描原目录下的配置文件，设置resources下的也扫描-->
+
+            <resource>
+
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
+
+
     </build>
+
 </project>

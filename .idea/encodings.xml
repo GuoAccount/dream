@@ -13,5 +13,8 @@
     <file url="file://$PROJECT_DIR$/dream_manager_web" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dream_parent" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dream_protal_web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dream_search" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dream_search/dream_search_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dream_search/dream_serarch_service" charset="UTF-8" />
   </component>
 </project>

@@ -72,6 +72,9 @@
           <element id="archive" name="dream_content_interface-1.0-SNAPSHOT.jar">
             <element id="module-output" name="dream_content_interface" />
           </element>
+          <element id="archive" name="dream_search_interface-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="dream_search_interface" />
+          </element>
         </element>
       </element>
       <element id="directory" name="META-INF">

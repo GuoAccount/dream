@@ -14,6 +14,9 @@
       <module fileurl="file://$PROJECT_DIR$/dream_manager_web/dream_manager_web.iml" filepath="$PROJECT_DIR$/dream_manager_web/dream_manager_web.iml" />
       <module fileurl="file://$PROJECT_DIR$/dream_parent/dream_parent.iml" filepath="$PROJECT_DIR$/dream_parent/dream_parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/dream_protal_web/dream_protal_web.iml" filepath="$PROJECT_DIR$/dream_protal_web/dream_protal_web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_search/dream_search.iml" filepath="$PROJECT_DIR$/dream_search/dream_search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_search/dream_search_interface/dream_search_interface.iml" filepath="$PROJECT_DIR$/dream_search/dream_search_interface/dream_search_interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dream_search/dream_serarch_service/dream_serarch_service.iml" filepath="$PROJECT_DIR$/dream_search/dream_serarch_service/dream_serarch_service.iml" />
     </modules>
   </component>
 </project>

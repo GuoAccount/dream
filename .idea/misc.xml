@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/dream_manager/dream_manager_service" />
     <file type="web" url="file://$PROJECT_DIR$/dream_manager_web" />
     <file type="web" url="file://$PROJECT_DIR$/dream_protal_web" />
+    <file type="web" url="file://$PROJECT_DIR$/dream_search/dream_serarch_service" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -15,6 +16,7 @@
         <option value="$PROJECT_DIR$/dream_manager_web/pom.xml" />
         <option value="$PROJECT_DIR$/dream_protal_web/pom.xml" />
         <option value="$PROJECT_DIR$/dream_content/pom.xml" />
+        <option value="$PROJECT_DIR$/dream_search/pom.xml" />
       </list>
     </option>
   </component>

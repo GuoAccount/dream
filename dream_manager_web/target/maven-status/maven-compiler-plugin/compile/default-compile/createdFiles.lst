@@ -4,3 +4,4 @@ com\dream\controller\PageController.class
 com\dream\controller\ItemCatController.class
 com\dream\controller\ContentController.class
 com\dream\util\FastDFSClient.class
+com\dream\controller\SearchItemController.class
