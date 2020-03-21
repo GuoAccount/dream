@@ -1,2 +1,4 @@
+com\dream\search\dao\SearchItemDao.class
+com\dream\search\dao\SearchItemDaoImpl.class
 com\dream\search\mapper\SearchItemMapper.class
 com\dream\search\impl\SearchItemServiceImpl.class

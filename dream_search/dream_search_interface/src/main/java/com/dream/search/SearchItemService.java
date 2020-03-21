@@ -1,6 +1,7 @@
 package com.dream.search;
 
 import com.dream.common.pojo.DreamResult;
+import com.dream.common.pojo.SearchResult;
 
 public interface SearchItemService {
     /**
@@ -9,4 +10,14 @@ public interface SearchItemService {
      * @throws Exception
      */
     DreamResult importAllItems() throws Exception;
+
+    /**
+     *
+     * @param queryString
+     * @param page
+     * @param rows
+     * @return
+     * @throws Exception
+     */
+    SearchResult search(String queryString,Integer page,Integer rows) throws Exception;
 }

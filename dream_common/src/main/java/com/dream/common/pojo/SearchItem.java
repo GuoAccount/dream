@@ -18,6 +18,14 @@ public class SearchItem implements Serializable {
     /** 商品描述*/
     private String itemDesc;
 
+    //这里处理一个图片地址，返回一个图片的数组
+    public String[] getImages(){
+        if(this.image!=null && !"".equals(this.image)&&this.image.indexOf(",")!=-1){
+            return this.image.split(",");
+        }
+        return new String[]{this.image};
+    }
+
     public String getImage() {
         return image;
     }

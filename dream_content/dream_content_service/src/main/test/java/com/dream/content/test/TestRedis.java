@@ -32,22 +32,22 @@ public class TestRedis {
         //关闭
         jedis.close();
     }
-    @Test
-    public void testRedisCluster(){
-        //使用JedisCluster对象，需要指定一个set集合作为redis集群的节点对象
-        HashSet<HostAndPort> nodes = new HashSet<>();
-        //每一个HostAndPort都是一个ip和端口描述的redis服务端的节点
-        nodes.add(new HostAndPort("192.168.31.12",7001));
-        nodes.add(new HostAndPort("192.168.31.12",7002));
-        nodes.add(new HostAndPort("192.168.31.12",7003));
-        nodes.add(new HostAndPort("192.168.31.12",7004));
-        nodes.add(new HostAndPort("192.168.31.12",7005));
-        nodes.add(new HostAndPort("192.168.31.12",7006));
-        JedisCluster jedisCluster = new JedisCluster(nodes);
-        jedisCluster.set("cluster_demo","java_jedis_cluster");
-        String demo = jedisCluster.get("cluster_demo");
-        System.out.println(demo);
-        //3关闭
-        jedisCluster.close();
-    }
+//    @Test
+//    public void testRedisCluster(){
+//        //使用JedisCluster对象，需要指定一个set集合作为redis集群的节点对象
+//        HashSet<HostAndPort> nodes = new HashSet<>();
+//        //每一个HostAndPort都是一个ip和端口描述的redis服务端的节点
+//        nodes.add(new HostAndPort("192.168.31.12",7001));
+//        nodes.add(new HostAndPort("192.168.31.12",7002));
+//        nodes.add(new HostAndPort("192.168.31.12",7003));
+//        nodes.add(new HostAndPort("192.168.31.12",7004));
+//        nodes.add(new HostAndPort("192.168.31.12",7005));
+//        nodes.add(new HostAndPort("192.168.31.12",7006));
+//        JedisCluster jedisCluster = new JedisCluster(nodes);
+//        jedisCluster.set("cluster_demo","java_jedis_cluster");
+//        String demo = jedisCluster.get("cluster_demo");
+//        System.out.println(demo);
+//        //3关闭
+//        jedisCluster.close();
+//    }
 }

@@ -6,17 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="dream_serarch_service" />
         <module name="dream_protal_web" />
         <module name="dream_manager_web" />
         <module name="dream_manager_service" />
         <module name="dream_content_service" />
+        <module name="dream_search_web" />
+        <module name="dream_manager_pojo" />
         <module name="dream_search_interface" />
-        <module name="dream_content_interface" />
+        <module name="dream_serarch_service" />
         <module name="dream_manager_interface" />
         <module name="dream_common" />
         <module name="dream_manager_dao" />
-        <module name="dream_manager_pojo" />
+        <module name="dream_content_interface" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -34,6 +35,7 @@
       <module name="dream_protal_web" target="9" />
       <module name="dream_search" target="9" />
       <module name="dream_search_interface" target="9" />
+      <module name="dream_search_web" target="9" />
       <module name="dream_serarch_service" target="9" />
     </bytecodeTargetLevel>
   </component>
