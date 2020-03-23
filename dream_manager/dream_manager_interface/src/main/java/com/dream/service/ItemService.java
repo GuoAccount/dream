@@ -3,12 +3,19 @@ package com.dream.service;
 import com.dream.common.pojo.DreamResult;
 import com.dream.common.pojo.EasyUiDataGridResult;
 import com.dream.pojo.TbItem;
+import com.dream.pojo.TbItemDesc;
 
 import java.util.List;
 
 public interface ItemService {
     /**
-     *
+     * 根据商品ID查找商品描述
+     * @param itemId
+     * @return
+     */
+    TbItemDesc getItemDescById(Long itemId);
+    /**
+     *根据商品ID查找商品
      * @param itemId
      * @return
      */

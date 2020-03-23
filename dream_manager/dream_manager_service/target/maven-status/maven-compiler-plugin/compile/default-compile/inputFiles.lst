@@ -1,2 +1,5 @@
 C:\Users\34851\IdeaProjects\dream\dream_manager\dream_manager_service\src\main\java\com\dream\service\impl\ItemCatServiceImpl.java
 C:\Users\34851\IdeaProjects\dream\dream_manager\dream_manager_service\src\main\java\com\dream\service\impl\ItemServiceImpl.java
+C:\Users\34851\IdeaProjects\dream\dream_manager\dream_manager_service\src\main\java\com\dream\jedis\JedisClientCluster.java
+C:\Users\34851\IdeaProjects\dream\dream_manager\dream_manager_service\src\main\java\com\dream\jedis\JedisClientPool.java
+C:\Users\34851\IdeaProjects\dream\dream_manager\dream_manager_service\src\main\java\com\dream\jedis\JedisClient.java

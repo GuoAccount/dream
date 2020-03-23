@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/mvc
+ 		http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <context:component-scan base-package="com.dream.item.controller"/>
+<!--    <context:property-placeholder location="classpath:resource/Ad1Node.properties"/>-->
+
+    <!--开启MVC注解扫描 如果配置了此注解驱动，那么就不用配置处理器映射器和处理器适配器了 -->
+    <mvc:annotation-driven/>
+    <!--静态资源映射-->
+    <mvc:default-servlet-handler/>
+    <!--
+    <mvc:resources mapping="/css/**/" location="/css/"/>
+    -->
+    <!--定义视图解析器ViewResolver -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--加上一个ItemService的bean,从protal系统中调用-->
+    <dubbo:application name="dream_item_web"/>
+    <!--注册中心的地址-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" register=""/>
+    <!--调用服务
+        interface="com.dream.service.ItemService" 调用的接口
+        会把服务的接口的bean 注入到spring容器中，给bean设置id
+        是id="itemService"
+        在controller中注入对象时，使用这个id进行注入
+    -->
+    <dubbo:reference interface="com.dream.service.ItemService" timeout="3000"
+                     id="itemService"/>
+
+</beans>

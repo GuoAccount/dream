@@ -11,13 +11,14 @@
         <module name="dream_manager_service" />
         <module name="dream_content_service" />
         <module name="dream_search_web" />
-        <module name="dream_manager_pojo" />
+        <module name="dream_content_interface" />
         <module name="dream_search_interface" />
         <module name="dream_serarch_service" />
+        <module name="dream_item_web" />
         <module name="dream_manager_interface" />
         <module name="dream_common" />
         <module name="dream_manager_dao" />
-        <module name="dream_content_interface" />
+        <module name="dream_manager_pojo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -25,6 +26,7 @@
       <module name="dream_content" target="1.8" />
       <module name="dream_content_interface" target="1.8" />
       <module name="dream_content_service" target="1.8" />
+      <module name="dream_item_web" target="9" />
       <module name="dream_manager" target="1.8" />
       <module name="dream_manager_dao" target="1.8" />
       <module name="dream_manager_interface" target="1.8" />

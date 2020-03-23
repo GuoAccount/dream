@@ -1,8 +1,11 @@
 package com.dream.service.impl;
 
+import com.alibaba.dubbo.common.json.JSON;
+import com.alibaba.dubbo.common.json.ParseException;
 import com.dream.common.pojo.DreamResult;
 import com.dream.common.pojo.EasyUiDataGridResult;
 import com.dream.common.util.UUIDUtils;
+import com.dream.jedis.JedisClient;
 import com.dream.mapper.TbItemDescMapper;
 import com.dream.mapper.TbItemMapper;
 import com.dream.pojo.TbItem;
@@ -11,7 +14,9 @@ import com.dream.pojo.TbItemExample;
 import com.dream.service.ItemService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
@@ -20,6 +25,7 @@ import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -37,6 +43,13 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private Destination destination;
 
+    @Autowired
+    private JedisClient jedisClient;
+    @Value("${ITEM_INFO_KEY}")
+    private String ITEM_INFO_KEY;
+    @Value("${ITEM_INFO_KEY_EXPIRE}")
+    private Integer ITEM_INFO_KEY_EXPIRE;
+
     //发送MQ消息同步索引库
     private void sendMQMessage(String itemId){
         //添加完之后发送一个MQ消息
@@ -48,10 +61,60 @@ public class ItemServiceImpl implements ItemService {
         });
     }
 
+
+    public TbItemDesc getItemDescById(Long itemId) {
+        //查询缓存
+        //添加缓存是不能影响到现在的业务
+        String jsonString = jedisClient.get(ITEM_INFO_KEY + ":" + itemId + "BASE");
+        //得到的数据不为空，说明有缓存，直接返回。
+        if(StringUtils.isNoneBlank(jsonString)){
+            //设置一下过期时间 8小时 中午12访问了一次 晚上8点过时 如果中间访问了则从最后一次访问8小时候过期
+            jedisClient.expire(ITEM_INFO_KEY+":"+itemId+"BASE",ITEM_INFO_KEY_EXPIRE);
+            try {
+                return JSON.parse(jsonString,TbItemDesc.class);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        //逆向工程提供的根据主键查找信息的方法
+        TbItemDesc tbItemDesc = tbItemDescMapper.selectByPrimaryKey(itemId);
+        if (tbItemDesc!=null){
+            try {
+                jedisClient.set(ITEM_INFO_KEY+":"+itemId+"BASE",JSON.json(tbItemDesc));
+                jedisClient.expire(ITEM_INFO_KEY+":"+itemId+"BASE",ITEM_INFO_KEY_EXPIRE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return tbItemDesc;
+    }
+
     @Override
     public TbItem selectByKey(long itemId) {
+        //查询缓存
+        //添加缓存是不能影响到现在的业务
+        String jsonString = jedisClient.get(ITEM_INFO_KEY + ":" + itemId + "BASE");
+        //得到的数据不为空，说明有缓存，直接返回。
+        if(StringUtils.isNoneBlank(jsonString)){
+            //设置一下过期时间 8小时 中午12访问了一次 晚上8点过时 如果中间访问了则从最后一次访问8小时候过期
+            jedisClient.expire(ITEM_INFO_KEY+":"+itemId+"BASE",ITEM_INFO_KEY_EXPIRE);
+            try {
+                return JSON.parse(jsonString,TbItem.class);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         //逆向工程提供的根据主键查找信息的方法
-        return tbItemMapper.selectByPrimaryKey(itemId);
+        TbItem tbItem = tbItemMapper.selectByPrimaryKey(itemId);
+        if (tbItem!=null){
+            try {
+                jedisClient.set(ITEM_INFO_KEY+":"+itemId+"BASE",JSON.json(tbItem));
+                jedisClient.expire(ITEM_INFO_KEY+":"+itemId+"BASE",ITEM_INFO_KEY_EXPIRE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return tbItem;
     }
 
     @Override

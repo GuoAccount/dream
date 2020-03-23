@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 导入资源文件 db.properties-->
-    <context:property-placeholder location="classpath:properties/db.properties"/>
+    <context:property-placeholder location="classpath:properties/*.properties"/>
 
     <!-- 配置dbcp连接池参数使用Spring表达式来传值
      使用Druid连接池，在功能和性能上都超过其他的dbcp,c3p0等连接池，alibaba提供的

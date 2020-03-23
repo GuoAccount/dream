@@ -17,6 +17,10 @@
             <artifactId>activemq-all</artifactId>
             <version>${activemq.version}</version>
         </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
         <!-- dao依赖 -->
         <dependency>
             <groupId>com.dream</groupId>

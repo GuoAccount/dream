@@ -7,6 +7,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/dream_content/dream_content_service" />
+    <file type="web" url="file://$PROJECT_DIR$/dream_item_web" />
     <file type="web" url="file://$PROJECT_DIR$/dream_manager/dream_manager_service" />
     <file type="web" url="file://$PROJECT_DIR$/dream_manager_web" />
     <file type="web" url="file://$PROJECT_DIR$/dream_protal_web" />
@@ -24,6 +25,7 @@
         <option value="$PROJECT_DIR$/dream_content/pom.xml" />
         <option value="$PROJECT_DIR$/dream_search/pom.xml" />
         <option value="$PROJECT_DIR$/dream_search_web/pom.xml" />
+        <option value="$PROJECT_DIR$/dream_item_web/pom.xml" />
       </list>
     </option>
   </component>

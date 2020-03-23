@@ -1,3 +1,6 @@
+com\dream\jedis\JedisClient.class
 com\dream\service\impl\ItemServiceImpl.class
 com\dream\service\impl\ItemCatServiceImpl.class
 com\dream\service\impl\ItemServiceImpl$1.class
+com\dream\jedis\JedisClientCluster.class
+com\dream\jedis\JedisClientPool.class
