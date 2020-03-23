@@ -17,6 +17,7 @@
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-truns.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-dao.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-service.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext-activemq.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -31,6 +32,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.apache.activemq:activemq-all:5.13.0" level="project" />
     <orderEntry type="module" module-name="dream_manager_dao" />
     <orderEntry type="module" module-name="dream_manager_pojo" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.2.8" level="project" />

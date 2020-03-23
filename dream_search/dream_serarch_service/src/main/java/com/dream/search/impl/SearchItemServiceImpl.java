@@ -76,4 +76,9 @@ public class SearchItemServiceImpl implements SearchItemService {
         return result;
     }
 
+    @Override
+    public DreamResult updateSearchItemById(Long id) throws Exception {
+        return searchItemDao.updateSearchItemById(id);
+    }
+
 }

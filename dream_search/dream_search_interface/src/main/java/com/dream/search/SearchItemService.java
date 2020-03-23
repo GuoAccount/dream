@@ -20,4 +20,11 @@ public interface SearchItemService {
      * @throws Exception
      */
     SearchResult search(String queryString,Integer page,Integer rows) throws Exception;
+    /**
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public DreamResult updateSearchItemById(Long id) throws Exception;
 }

@@ -12,6 +12,11 @@
     <packaging>war</packaging>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
         <!-- dao依赖 -->
         <dependency>
             <groupId>com.dream</groupId>

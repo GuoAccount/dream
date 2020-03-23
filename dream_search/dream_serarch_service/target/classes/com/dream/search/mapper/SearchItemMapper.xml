@@ -9,5 +9,14 @@
     where a.cid=b.id and a.id=c.item_id
     and a.status=1
   </select>
+  <select id="getItemById" resultType="com.dream.common.pojo.SearchItem">
+    select
+    a.id,a.title,a.sell_point sellPoint
+    ,a.price,a.image,b.`name` categoryName,c.item_desc itemDesc
+    from tb_item a,tb_item_cat b,tb_item_desc c
+    where a.cid=b.id and a.id=c.item_id
+    and a.status=1 and a.id=#{itemId}
+  </select>
+
 
 </mapper>
