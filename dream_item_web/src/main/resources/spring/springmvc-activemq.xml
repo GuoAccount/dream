@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--想要发送消息，必须要先跟activemq的服务先连接，创建一个连接 new -->
+    <bean class="org.apache.activemq.ActiveMQConnectionFactory" id="activeMQConnectionFactory">
+        <property name="brokerURL" value="tcp://192.168.31.12:61616"/>
+    </bean>
+
+    <!--Spring管理mq的时候使用的起始是jms 下的一个连接工厂来产生的-->
+    <bean class="org.springframework.jms.connection.SingleConnectionFactory" id="connectionFactory">
+        <property name="targetConnectionFactory" ref="activeMQConnectionFactory"/>
+    </bean>
+
+    <!--定义一个Jms的template-->
+    <bean class="org.springframework.jms.core.JmsTemplate" id="jmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
+    <!--1、配置点对点的模式-->
+    <!--  <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+          <value>spring-queue</value>
+        </constructor-arg>
+      </bean>-->
+    <!--2、发布/订阅模式  一对多-->
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg>
+            <value>item-update-topic</value>
+        </constructor-arg>
+    </bean>
+    <!--监听器的配置-->
+    <bean class="com.dream.item.listener.ItemChangeGenHtmlMessageListener" id="itemChangeGenHtmlMessageListener"/>
+
+    <!--消息监听器的mq的连接配置-->
+    <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="destination"/>
+        <property name="messageListener" ref="itemChangeGenHtmlMessageListener"/>
+    </bean>
+</beans>

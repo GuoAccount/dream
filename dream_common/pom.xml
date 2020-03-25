@@ -13,7 +13,19 @@
     <artifactId>dream_common</artifactId>
     <packaging>jar</packaging>
     <!-- 依赖工具类的jar包 -->
-    <dependencies> <!-- 时间操作组件 -->
+    <dependencies>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.18.2-GA</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- 时间操作组件 -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>

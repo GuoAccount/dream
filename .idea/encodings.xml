@@ -18,5 +18,9 @@
     <file url="file://$PROJECT_DIR$/dream_search/dream_search_interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dream_search/dream_serarch_service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dream_search_web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dream_sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dream_sso/dream_interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dream_sso/dream_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dream_sso_web" charset="UTF-8" />
   </component>
 </project>

@@ -11,7 +11,7 @@
  		http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <context:component-scan base-package="com.dream.item.controller"/>
-<!--    <context:property-placeholder location="classpath:resource/Ad1Node.properties"/>-->
+    <!--    <context:property-placeholder location="classpath:resource/Ad1Node.properties"/>-->
 
     <!--开启MVC注解扫描 如果配置了此注解驱动，那么就不用配置处理器映射器和处理器适配器了 -->
     <mvc:annotation-driven/>
@@ -24,6 +24,11 @@
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--freemarker 指定需要生成文件的模板的信息-->
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer" id="freeMarkerConfigurer">
+        <property value="/WEB-INF/ftl/" name="templateLoaderPath"/>
+        <property value="UTF-8" name="defaultEncoding"/>
     </bean>
     <!--加上一个ItemService的bean,从protal系统中调用-->
     <dubbo:application name="dream_item_web"/>

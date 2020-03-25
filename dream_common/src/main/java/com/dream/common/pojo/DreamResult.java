@@ -10,6 +10,12 @@ public class DreamResult implements Serializable {
     //向英国如果需要带数据，封装到data
     private Object data;
 
+    public DreamResult(Integer status, String name) {
+        this.data=null;
+        this.status=status;
+        this.msg=name;
+    }
+
 
     //1如果成功了 但是没有数据要返回，直接调用OK方法代表成功
     public static DreamResult ok(){
@@ -18,7 +24,10 @@ public class DreamResult implements Serializable {
     //2如果失败了，则自定义DreamResule对象
     public static DreamResult build(Integer status,String name,Object data){
         return new DreamResult(status,name,data);
+    }  public static DreamResult build(Integer status,String name){
+        return new DreamResult(status,name);
     }
+
     //3如果成功了，需要返回对象
     public static DreamResult ok(Object data){
         return new DreamResult(data);
