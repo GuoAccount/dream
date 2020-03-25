@@ -1,5 +1,6 @@
 package com.dream.sso.service.impl;
 import com.alibaba.dubbo.common.json.JSON;
+import com.alibaba.dubbo.common.json.ParseException;
 import com.dream.common.pojo.DreamResult;
 import com.dream.mapper.TbUserMapper;
 import com.dream.pojo.TbUser;
@@ -63,5 +64,25 @@ public class UserLoginServiceImpl implements UserLoginService {
         jedisClient.expire(USER_INFO+":"+token,EXPIRE_TIME);
         //在单点登录中，其它系统如果要从redis中查看是否用登录信息，需要一个此token sessionId（在表现层中设置放到cookie中）
         return DreamResult.ok(token);
+    }
+
+    @Override
+    public DreamResult getUserByToken(String token) {
+        //1。直接根据token从redis服务器中进行查询（相当于通过浏览器的sqlSessionId向服务器查找sqlSession）
+        String jsonString = jedisClient.get(USER_INFO + ":" + token);
+        //2.判断是否查询到
+        if (StringUtils.isNoneBlank(jsonString)){//如果有数据那么就是不控的则true
+            //3.每一次重新能访问首页，实际上就要重新计时
+            jedisClient.expire(USER_INFO+":"+token,EXPIRE_TIME);
+            //把查询到的对象返回
+            try {
+                TbUser user = JSON.parse(jsonString, TbUser.class);
+                //返回对象
+                return DreamResult.ok(user);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return DreamResult.build(400,"用户已过期");
     }
 }

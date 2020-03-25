@@ -10,4 +10,11 @@ public interface UserLoginService {
      * @return
      */
     DreamResult login(String username,String password);
+
+    /**
+     *
+     * @param token
+     * @return
+     */
+    DreamResult getUserByToken(String token);
 }
